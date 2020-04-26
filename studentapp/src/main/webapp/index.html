@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>VJYA_HOME</title>
+<!-- custom-theme -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Medicate Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="css/style2.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/all.css" rel="stylesheet" type="text/css" media="all"/>
+		
+<link href="//fonts.googleapis.com/css?family=Titillium+Web:200,200i,300,300i,400,400i,600,600i,700,700i,900" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+<link rel="stylesheet" href="css/styleforlogin.css" type="text/css" media="all" />
+<link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext" rel="stylesheet">
+<script src="js/all.js"></script>
+<script type="text/javascript">
+function validuser(){
+    var u=document.getElementById("username1").value; 
+    var p=document.getElementById("userpass1").value;
+    var b="Succes";
+  if(u==""||p==""){
+      swal("Fields Must be Filled");
+  }else{
+     
+      var req=new XMLHttpRequest();
+    req.onreadystatechange = function()
+    {
+        if(req.readyState=='4'&& req.status=='200')
+        {
+            
+            var s=req.responseText;
+       
+          
+           if(b.localeCompare(s)==-1){
+               window.location.href="fordashboard.jsp";
+           }
+           else{
+               document.getElementById("message1").innerHTML="Invalid UserName or Password";
+           }
+            
+            
+           
+         }
+    }
+    req.open("GET","http://localhost:8080/studentapp/userlogin?username="+u+"&password="+p,true);
+    req.send(null);
+}
+ }
+ 
+   
+
+
+function validadmin(){
+    var u=document.getElementById("adminname").value; 
+    var p=document.getElementById("adminpassword").value;
+    var b="Succes";
+  if(u==""||p==""){
+      swal("Fields Must be Filled");
+  }else{
+     
+      var req=new XMLHttpRequest();
+    req.onreadystatechange = function()
+    {
+        if(req.readyState=='4'&& req.status=='200')
+        {
+            
+            var s=req.responseText;
+       
+        
+           if(b.localeCompare(s)==-1){
+               window.location.href="student.html";
+           }
+           else{
+               document.getElementById("message2").innerHTML="Invalid UserName or Password";
+           }
+            
+            
+           
+         }
+    }
+    req.open("GET","http://localhost:8080/studentapp/adminlogin?username="+u+"&password="+p,true);
+    req.send(null);
+}
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+</script>
+
+</head>
+<body>
+<div class="agileits_main">
+<!-- header -->
+<div class="container">
+<div class="w3_agile_logo">
+    <h1><a href="index.html"><i class="fas fa-heartbeat" aria-hidden="true"></i><span style="font-family: Gabriola;color:#00d2d4">VIJAYA </span><span style="font-family: Gabriola;color:#f54785">COLLEGE</span></a></h1>
+</div>			
+
+</div>
+<!-- menu -->
+<script type="text/javascript" src="js/main.js"></script>
+<!-- //menu -->
+<!--// header -->
+<!-- banner -->
+<div class="w3_banner">
+<div class="container">
+<div class="slider">
+<div class="callbacks_container">
+  	<div class="sub-main-w3">
+<div class="image-style">
+
+</div>
+<!-- vertical tabs -->
+<div class="vertical-tab">
+<div id="section1" class="section-w3ls">
+	<input type="radio" name="sections" id="option1" checked>
+	<label for="option1" class="icon-left-w3pvt"><span  class="far fa-user" aria-hidden="true"></span>stu/fact Login</label>
+	<article>
+		<form >
+                                    <h3 class="legend" style="color:white;font-family:Segoe Script;font-size: 40px"><span style="color:#00d2d4">User</span><span  style="color:#f54785"> LogIn</span></h3>
+			<div class="input">
+				<span  class="far fa-user" aria-hidden="true"></span>
+				<input type="text" placeholder="Username" name="name" required  id="username1" />
+			</div>
+			<div class="input">
+				<span class="fa fa-key" aria-hidden="true"></span>
+				<input type="password" placeholder="Password" name="password" required id="userpass1" />
+			</div>
+                                        <div>
+			<button type="button" class="btn submit" style="width:48%;float:left" onclick="validuser()" >Login</button>
+                                     <button type="submit" class="btn submit" style="width:48%;float:right">Forgot Password</button>
+                                        </div>
+                                    <span id="message1" style="color:red;font-family:Times-Romen ;font-size: 20px;"></span>
+			
+		</form>
+                   
+	</article>
+</div>
+            <div id="section2" class="section-w3ls">
+	<input type="radio" name="sections" id="option2" >
+	<label for="option2" class="icon-left-w3pvt"><span class="fas fa-user-md" aria-hidden="true"></span>Admin Login</label>
+	<article>
+		<form action="#" method="post">
+                                    <h3 class="legend" style="color:white;font-family:Segoe Script;font-size: 40px"><span style="color:#00d2d4">Admin</span><span style="color:#f54785"> LogIn</span></h3>
+			<div class="input">
+				<span   class="far fa-user" aria-hidden="true"></span>
+				<input type="text" placeholder="Username" id="adminname" required />
+			</div>
+			<div class="input">
+				<span class="fa fa-key" aria-hidden="true"></span>
+				<input type="password" placeholder="Password" id="adminpassword" required />
+			</div>
+                                        <div>
+			<button type="button" class="btn submit" onclick="validadmin()">Login</button>
+                                     
+                                        </div>
+			 <span id="message2" style="color:red;font-family:Times-Romen ;font-size: 20px;"></span>
+		</form>
+                         
+	</article>
+</div>
+<div id="section3" class="section-w3ls">
+	<input type="radio" name="sections" id="option3">
+	<label for="option3" class="icon-left-w3pvt"><span class="fas fa-user-plus" aria-hidden="true"></span>student sign up</label>
+	<article>
+		<form  method="post">
+                                    <h3 class="legend" style="color:pink;font-family:Segoe Script;font-size: 40px"><span style="color:#00d2d4">student Sign</span><span style="color:#f54785"> Up Form</span></h3>
+			<div class="input">
+				<span  class="far fa-user" aria-hidden="true"></span>
+				<input type="text" placeholder="Username" name="rusername"   id="username3" required/>
+			</div>
+			<div class="input">
+				<span class="fa fa-key" aria-hidden="true"></span>
+				<input type="password" placeholder="password"     id="password3" required />
+			</div>
+			<div class="input">
+				<span class="fa fa-key" aria-hidden="true"></span>
+				<input type="password" placeholder="Confirm password"  id="conpassword3"  required />
+			</div>
+			<button type="button" class="btn submit"  style="width:48%;float:left" onclick="validate()" >Register</button>
+                                        <button type="button" class="btn submit"  style="width:48%;float:right" onclick="window.location.href='index.html'" >Sign In</button>
+                                        <span id="message3" style="color:red;font-family:Times-Romen ;font-size: 20px;"></span>
+                                        
+                                        <script src="js/sweetalert.js"></script>
+                                        
+                                        <script>
+                                       function validate(){
+                                         
+                                         var usernam=document.getElementById("username3").value; 
+                                           var passwor=document.getElementById("password3").value;
+                                           var cpass=document.getElementById("conpassword3").value;
+                                       
+                                            var req=new XMLHttpRequest();
+                                       
+                                        if(passwor==""||usernam==""){
+                                              swal("Enter Username and Password");
+                                              
+                                          }else if(passwor!=cpass){
+                                              swal("Password and ConformPassword must be Match");
+                                          }
+                                          else{
+                                          
+                                         req.onreadystatechange = function(){
+                                           if(req.readyState=='4'&& req.status=='200'){
+                                               var s=req.responseText;
+                                               document.getElementById("message3").innerHTML=s;
+                                           }
+                                         }
+                                            req.open("GET","http://localhost:8080/studentapp/registrationuser?username="+usernam+"&password="+passwor,true);
+                                            req.send(null);
+                                      }
+                                       }
+                                            </script>
+                                             <span id="message2" style="color:red;font-family:Times-Romen ;font-size: 20px;"></span>
+		</form>
+	</article>
+                                            
+                                        <div id="section4" class="section-w3ls">
+	<input type="radio" name="sections" id="option4">
+	<label for="option4" class="icon-left-w3pvt"><span class="fas fa-user-plus" aria-hidden="true"></span>faculty sign up</label>
+	<article>
+		<form  method="post">
+                                    <h3 class="legend" style="color:pink;font-family:Segoe Script;font-size: 40px"><span style="color:#00d2d4">faculty Sign</span><span style="color:#f54785"> Up Form</span></h3>
+			<div class="input">
+				<span  class="far fa-user" aria-hidden="true"></span>
+				<input type="text" placeholder="Username" name="rusername"   id="username4" required/>
+			</div>
+			<div class="input">
+				<span class="fa fa-key" aria-hidden="true"></span>
+				<input type="password" placeholder="password"     id="password4" required />
+			</div>
+			<div class="input">
+				<span class="fa fa-key" aria-hidden="true"></span>
+				<input type="password" placeholder="Confirm password"  id="conpassword4"  required />
+			</div>
+			<button type="button" class="btn submit"  style="width:48%;float:left" onclick="validate1()" >Register</button>
+                                        <button type="button" class="btn submit"  style="width:48%;float:right" onclick="window.location.href='index.html'" >Sign In</button>
+                                        <span id="message4" style="color:red;font-family:Times-Romen ;font-size: 20px;"></span>
+                                        
+                                        <script src="js/sweetalert.js"></script>
+                                        
+                                        <script>
+                                       function validate1(){
+                                         
+                                         var usernam=document.getElementById("username4").value; 
+                                           var passwor=document.getElementById("password4").value;
+                                           var cpass=document.getElementById("conpassword4").value;
+                                       
+                                            var req=new XMLHttpRequest();
+                                       
+                                        if(passwor==""||usernam==""){
+                                              swal("Enter Username and Password");
+                                              
+                                          }else if(passwor!=cpass){
+                                              swal("Password and ConformPassword must be Match");
+                                          }
+                                          else{
+                                          
+                                         req.onreadystatechange = function(){
+                                           if(req.readyState=='4'&& req.status=='200'){
+                                               var s=req.responseText;
+                                               document.getElementById("message4").innerHTML=s;
+                                           }
+                                         }
+                                            req.open("GET","http://localhost:8080/studentapp/registrationfaculty?username="+usernam+"&password="+passwor,true);
+                                            req.send(null);
+                                      }
+                                       }
+                                            </script>                                            
+                                            
+                                             <span id="message2" style="color:red;font-family:Times-Romen ;font-size: 20px;"></span>
+		</form>
+	</article>
+</div>
+
+</div>
+
+<div class="clear"></div>
+</div>
+</div>
+
+</div>
+</div>   
+</div>	
+</div>
+
+
+
+</div>
+<!-- //banner -->
+<!-- about -->
+<div class="jarallax w3ls-about w3ls-section " id="about">
+	<div class="container">
+		<h3 class="h3-w3l">about us</h3>
+		<div class="about-head text-center">
+			<div class="col-md-4 col-sm-4 col-xs-6 wthree-s1 " >
+				 <span class="fa fa-medkit sicon" aria-hidden="true"></span>
+				 <h4>BEST FACULTY</h4>
+				 <p>Surgeons performed more than 36,000 organ transplants in 2018, but many more people need organs. In January 2019, more than 113,000 people in the India were on organ transplant waiting lists. More than 2,000 children need organs.</p>
+				 <div class="w3-button">
+					<a href="#" data-toggle="modal" data-target="#myModal">Read More</a>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-4 col-xs-6 wthree-s1  s1  s1-active">
+				 <span class="fa fa-user-md sicon" aria-hidden="true"></span>
+				 <h4>HOSTEL</h4>
+				 <p>The specialized care of patients whose conditions are life-threatening and who require comprehensive care and constant monitoring, usually in intensive care units. Also known as intensive care.</p>
+				 <div class="w3-button">
+					<a href="#" data-toggle="modal" data-target="#myModal">Read More</a>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-4 col-xs-6 wthree-s1">
+				 <span class="fa fa-ambulance sicon" aria-hidden="true"></span>
+				 <h4>TRANSPOTITION</h4>
+				 <p>Emergency Medicine is a primary, or first-contact point of care for patients requiring the use of the health care system. ... Emergency physicians are responsible for providing immediate recognition, evaluation, care, stabilization, to adult and pediatric patients in response to acute illness and injury.</p>
+				 <div class="w3-button">
+					<a href="#" data-toggle="modal" data-target="#myModal">Read More</a>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>		
+	</div>
+</div>	
+<!-- //about -->
+<!-- Tooltip -->
+<div class="tooltip-content">
+	<div class="modal fade features-modal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-md">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title text-center">medicate</h4>
+				</div>
+				<div class="modal-body">
+					<img src="images/1.jpg" class="img-responsive" alt="image">
+					<p>Fusce et congue nibh, ut ullamcorper magna. Donec ac massa tincidunt, fringilla sapien vel, tempus massa. Vestibulum felis leo, tincidunt sit amet tristique accumsan. In vitae dapibus metus. Donec nec massa non nulla mattis aliquam egestas et mi.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- //Tooltip -->
+<div class="jarallax w3ls-services w3ls-section" id="services">
+	<div class="container">
+		<h3 class="h3-w3l">services</h3>
+		<div class="services-head text-center">
+			<h4>the skills to heal.the spirit to goal</h4>
+			<p>college complement and amplify the effectiveness of many other students, providing continuous availability of students for acute . college concentrate scarce resources within well-planned referral networks to respond efficiently to population study needs. They are an essential element of AICTE Approved and will be to meeting the Sustainable Development Goals.</p>
+		</div>
+		<div class="services-bg">
+			<h6>Hope join here</h6>
+			<a href="#" data-toggle="modal" data-target="#myModal">Read More</a>
+		</div>
+	</div>	
+	<div class="wthree-services-bottom">
+		<div class="container">
+			<div class="col-md-3 col-sm-3 col-xs-6 wthree-sb1 " >
+				 <span class="fa fa-certificate sicon" aria-hidden="true"></span>
+				 <span class="num">01</span><h4>PHARM</h4>
+				 <p>branches like form-c form-d nursing .....</p>
+			</div>
+			<div class="col-md-3 col-sm-3 col-xs-6 wthree-sb1  sb1">
+				 <span class="fa fa-heartbeat sicon" aria-hidden="true"></span>
+				 <span class="num">02</span><h4>DIPLAMO</h4>
+				 <p>POLYTECNIQE diplamo it having branches like mining cse ece eee.</p>
+			</div>
+			<div class="col-md-3 col-sm-3 col-xs-6 wthree-sb1 sb2">
+				 <span class="fa fa-star-o sicon" aria-hidden="true"></span>
+				 <span class="num">03</span><h4>MBA</h4>
+				 <p>MBA it having branches like XX YY ZZ.</p>
+			</div>
+			<!--  div class="col-md-3 col-sm-3 col-xs-6 wthree-sb1 sb2">
+				 <span class="fa fa-star-o sicon" aria-hidden="true"></span>
+				 <span class="num">04</span><h4>BED</h4>
+				 <p>BED it having branches like XX YY ZZ.</p>
+			</div-->
+			<div class="col-md-3 col-sm-3 col-xs-6 wthree-sb1 sb2">
+				 <span class="fa fa-plus-circle sicon" aria-hidden="true"></span>
+				 <span class="num">04</span><h4>BTECH</h4>
+				 <p>"B.Tech" 'bachler of enginnering and technology' in the branches of CSE ECE EEE MECH CIVIL</p>
+			</div>
+			<div class="clearfix"></div>
+		</div>	
+	</div>
+</div>	
+<div class="contact w3ls-section" id="contact">
+		<div class="container">
+                   
+                        <h4 class="h3-w3l">get in touch</h4>
+                        <div class="col-md-6 col-sm-6 contact-left" data-wow-duration="2s" data-wow-delay="0.5s">
+					<h2>Contact Information</h2>
+					<p>"VIJAYA ENGINEERING COLLEGE" ammapalem near thanikellea hp bunk khammam"</p>
+					<ul class="contact-list">
+						<li><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>756 global Place, INDIA.</li>
+						<li><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><a href="mailto:vijaya.vjya@mail.com">vijaya.vjya@example.com</a></li>
+						<li><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>+91 1234567890</li>
+					</ul>
+					<ul class="social-icons3">
+						<li><a href="#" class="fa fa-facebook icon-border facebook"> </a></li>
+						<li><a href="#" class="fa fa-twitter icon-border twitter"> </a></li>
+						<li><a href="#" class="fa fa-google-plus icon-border googleplus"> </a></li> 
+						<li><a href="#" class="fa fa-rss icon-border rss"> </a></li>
+
+					</ul>
+				</div>						
+				<div class="clearfix"> </div>
+			<div class="contact-grids">
+				 <div class="col-md-6 col-sm-6 contact-left">
+				 <h2>feed back form</h2>
+					<form action="#" method="post">
+						<input type="text" class="name" name="name" placeholder="First Name" required>
+						<input type="text" class="name" name="name" placeholder="Last Name" required>
+						<input type="email" class="name" name="name" placeholder="Email/ph" required>
+						<input type="text" class="name" name="name" placeholder="Subject" required>
+						<textarea placeholder="Your Message" required></textarea>
+						<input type="submit" value="SEND">
+					</form>
+				</div>
+			</div>	
+		</div>	
+      </div>                  
+</body>
+
+
+</html>
