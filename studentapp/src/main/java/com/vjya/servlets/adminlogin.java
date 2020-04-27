@@ -26,11 +26,14 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author pennantstaff
+ * @author
  */
 @WebServlet(name = "adminlogin", urlPatterns = {"/adminlogin"})
 public class adminlogin extends HttpServlet {
-Connection cn=null;
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 ResultSet rs=null;
 HttpSession hs=null;
 String us,pss;
@@ -56,13 +59,13 @@ int p;
            
                hs=request.getSession(true);
               Dbcon dt=new Dbcon();
+             try{
+              Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+              Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/vjya","root","root");
              
-            Class.forName(dt.getDriver());
-         cn=DriverManager.getConnection(dt.getUrl(),dt.getUsername(),dt.getPassword());
-                
-            ps=cn.prepareStatement("select username from admin1 where username='"+user+"'");
-            ps1=cn.prepareStatement("select pwd from admin1 where username='"+user+"'");
-            
+            ps=con.prepareStatement("select username from admin1 where username='"+user+"'");
+            ps1=con.prepareStatement("select pwd from admin1 where pwd='"+pwd+"'");
+             
           rs=ps.executeQuery();
          
             if(rs.next()){
@@ -91,7 +94,15 @@ int p;
                out.println("Failed");
                
             }
+            
+             
         }
+        catch(Exception e)
+        {
+        	System.out.println(e);
+        }
+        
+    }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

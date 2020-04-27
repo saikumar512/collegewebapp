@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Health Care a Medical Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Clinical Lab Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<!-- js -->
+
+<!-- //js -->
+<!--animate-->
+<!--//end-animate-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Poiret+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&display=swap" rel="stylesheet">
+<script type="text/javascript">
+    function getDiagnosticsTests(){
+        var diagnosticTest = [];
+ 
+                 $.get("http://localhost:8084/HealthCare/GetDiagnosticTest", function(responseText){
+                     
+                     diagnosticTest = responseText;
+                    for(var i=0;i<diagnosticTest.length;i++){
+                        addRow(diagnosticTest[i].test_id,diagnosticTest[i].test_name,diagnosticTest[i].test_method);
+                    }
+                     
+                 });
+               
+          
+        
+    };
+    var serNo=1;
+    function addRow(id,name,details) {
+            //Get the reference of the Table's TBODY element.
+            var tBody = $("#diagnosticTestsTable > TBODY")[0];
+			
+            //Add Row.
+            row = tBody.insertRow(-1);
+			
+			//Add sno cell.
+            cell = $(row.insertCell(-1));
+			var inputSno = document.createElement('label');
+			inputSno.setAttribute("id","id"+serNo+"");
+			inputSno.setAttribute("style","color:white");
+			inputSno.innerText=id;
+            cell.html($("#sno"));
+			cell.append(inputSno);
+			
+ 	 //Add Name cell.
+            cell = $(row.insertCell(-1));
+			//var inputFare = $('<label  style="color:white;"/>');
+			//inputFare.attr("id","fare"+serNo+"");
+			var inputName =document.createElement('label');
+			inputName.setAttribute("id","name"+serNo+"");
+			inputName.setAttribute("style","color:white");
+                        inputName.innerText=name;
+                         cell.html($("#name"));
+            cell.append(inputName);
+            
+            
+            //Add details cell.
+            cell = $(row.insertCell(-1));
+			//var inputFare = $('<label  style="color:white;"/>');
+			//inputFare.attr("id","fare"+serNo+"");
+			var inputDetails =document.createElement('label');
+			inputDetails.setAttribute("id","details"+serNo+"");
+			inputDetails.setAttribute("style","color:white");
+                        inputDetails.innerText=details;
+                           cell.html($("#detals"));
+            cell.append(inputDetails);
+         
+ 
+            //Add editIcon cell.
+            cell = $(row.insertCell(-1));
+            var btnEdit = $("<button />");
+             btnEdit.attr("id", "btnEdit"+serNo+"");
+             btnEdit.attr("data-toggle", "modal");
+             btnEdit.attr("data-target", "#myEditDiagnosticTest");
+            btnEdit.attr("onclick", "getDiagnosticTestById(this);");
+			//btnEdit.id="btnEdit"+serNo+"";
+			
+            btnEdit.attr("class","fa fa-edit");	
+           		
+            cell.append(btnEdit);
+            //Add editIcon cell.
+            cell = $(row.insertCell(-1));
+            var btnRemove = $("<button />");
+             btnRemove.attr("id", "btnRemove"+serNo+"");
+            btnRemove.attr("onclick", "deleteDiagnosticTest(this);");
+			//btnRemove.id="btnRemove"+serNo+"";
+			
+            btnRemove.attr("class","fa fa-trash");	
+           		
+            cell.append(btnRemove);
+			serNo++;
+        };
+   function getDiagnosticTestById(data){
+       var id=data.id;
+       var splitId=id.substring(7,9);
+       var test_Id="id"+splitId+"";
+       var idValue=document.getElementById(test_Id).innerText;
+       var test_id= null;
+       var dataById={};
+        $.get("http://localhost:8084/HealthCare/GetDignosticTestById",{
+            test_id:idValue
+        
+        }, function(diagnosticData){
+                     
+                     dataById=diagnosticData;
+                     document.getElementById("edit_Test_id").value=dataById.test_id;
+                     document.getElementById("edit_Test_Name").value=dataById.test_name;
+                     document.getElementById("edit_Test_category_id").value=dataById.test_catg_id;
+                     document.getElementById("edit_Test_Details").innerText=dataById.test_method;
+                      document.getElementById("edit_test_fee").value=dataById.test_price;
+                       document.getElementById("edit_Test_normalRangeFrom").value=dataById.test_normalrangefrom;
+                       document.getElementById("edit_Test_normalRangeTo").value=dataById.test_normalrangeto;
+                 });
+       
+   };
+   
+   function deleteDiagnosticTest(data){
+        var delid=data.id;
+       var delsplitId=delid.substring(9,11);
+       var deltest_Id="id"+delsplitId+"";
+       var idValue=document.getElementById(deltest_Id).innerText;
+       var deltest_id= null;
+       var dataById={};
+        $.get("http://localhost:8084/HealthCare/DeleteDiagnosticTest",{
+            deltest_id:idValue
+        
+        }, function(diagnosticData){
+                     
+                     alert("successfully deleted");
+                     location.reload();
+                 });
+   }
+    
+</script>
+
+
+</head>
+<body onload="getDiagnosticsTests()">
+<div class="container" style="width:100%">
+	<div class="row">
+		<div class="col-sm-3">
+			 <div class="navbar-header">
+			<h1><a  href="index.html">Health<span> Care </span></a></h1>
+			<br>
+			</div>
+		</div>
+		<div class="col-sm-9" align="right">
+		  <div class="glyphicon">
+  <button type="button" class="btn btn-info btn-lg dropdown-toggle" data-toggle="dropdown">
+  <span class="glyphicon glyphicon-user"></span> Admin
+  </button>
+  <div class="dropdown-menu">
+    <a  href="#">Log Out</a>
+  </div>
+</div>
+    </div>
+</div>
+		</div>
+
+<div class="row">
+  <div class="col-sm-3">
+    <div class="sidebar-nav">
+      <div class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <span class="visible-xs navbar-brand">Sidebar menu</span>
+        </div>
+        <div class="navbar-collapse collapse sidebar-navbar-collapse">
+          <ul class="mainmenu">
+            <li class="active" style="font-size:25px"><a href="#">Master Entry</a>
+			    <ul class="submenu">
+				   <li style="font-size:25px"><a href="specializations.html">Specializations</a></li>
+				   <li style="font-size:25px" class="active"><a href="doctors.html">Doctors</a></li>
+				   <li style="font-size:25px"><a href="diagnostics.html">Diagnostic Tests</a></li>
+				</ul>
+			</li>
+            <li style="font-size:25px"><a href="booked_appoinments.html">Booked Appointments</a></li>
+            <li style="font-size:25px"><a href="patients_profile.html">Patients Profile</a></li>
+            <li style="font-size:25px"><a href="reports.html">Reports</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-9">
+     <div class="row">
+	    <div class="col-sm-4">
+		  <h2 style="font-size:40px;color:#f54785">Diagnostic tests</h2>
+		</div>
+		<div class="col-sm-8" align="right">
+		 <button class="btn btn-success" data-toggle="modal" data-target="#myAddSpecialization">Add Tests</button>
+		</div>
+		        <div class="modal fade" id="myAddSpecialization" role="dialog">
+            <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Diagnostic Test</h4>
+        </div>
+        <div class="modal-body">
+            <form id="addDiagnostics" action="AddDiagnosticTest" method="POST" onsubmit="addDiagnostics()">
+		
+			  <div class="form-group">
+			   <label>Test Name:</label>
+			   <input type="text" id="Test_Name" name="Test_Name">
+			 </div>
+                         <div class="form-group">
+			   <label>Test_category_id:</label>
+			   <input type="text" name="Test_category_id" id="Test_category_id">
+			 </div>
+			 <div class="form-group">
+			   <label>Test Details:</label>
+			  <textarea id="Test_Details" name="Test_Details" ></textarea>
+			 </div>
+			 <div class="form-group">
+			   <label>Test Fee:</label>
+			   <input type="text" name="Test_Fee" id="test_fee">
+			 </div>
+                <div class="form-group">
+			   <label>Test_normalRangeFrom:</label>
+			   <input type="text" name="Test_normalRangeFrom" id="Test_normalRangeFrom">
+			 </div>
+                <div class="form-group">
+			   <label>Test_normalRangeTo:</label>
+			   <input type="text" name="Test_normalRangeTo" id="Test_normalRangeTo">
+			 </div>
+              <input type="submit" class="btn btn-success" value="Add" >
+		  </form>
+        </div>
+        <!--<div class="modal-footer">
+          <button type="button" class="btn btn-success" >Add</button>
+        </div>-->
+      </div>
+      
+    </div>
+       </div>
+	 </div>
+	 <div class="row">
+	 <table id="diagnosticTestsTable">
+	    <thead>
+		  <tr>
+		   <th style="width:15%;color:#00d2d4;font-size:20px">Test id</th>
+		   <th style="width:25%;color:#00d2d4;font-size:20px">Test Name</th>
+		   <th style="width:25%;color:#00d2d4;font-size:20px">Test details</th>
+		   <th style="width:5%;color:#00d2d4;font-size:20px">update</th>
+		   <th style="width:5%;color:#00d2d4;font-size:20px">delete</th>
+		   </tr>
+		</thead>
+                <tr>
+                </tr>
+		
+                  <div class="modal fade" id="myEditDiagnosticTest" role="dialog">
+            <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit Diagnostic Test</h4>
+        </div>
+        <div class="modal-body">
+          <form id="editDiagnostics" action="EditDiagnosticTest" method="POST">
+		          <div class="form-group">
+			   <label>Test Id:</label>
+			   <input type="text" id="edit_Test_id" name="edit_Test_id">
+			 </div>
+			  <div class="form-group">
+			   <label>Test Name:</label>
+			   <input type="text" id="edit_Test_Name" name="edit_Test_Name">
+			 </div>
+                         <div class="form-group">
+			   <label>Test_category_id:</label>
+			   <input type="text" name="edit_Test_category_id" id="edit_Test_category_id">
+			 </div>
+			 <div class="form-group">
+			   <label>Test Details:</label>
+			  <textarea id="edit_Test_Details" name="edit_Test_Details" ></textarea>
+			 </div>
+			 <div class="form-group">
+			   <label>Test Fee:</label>
+			   <input type="text" name="edit_Test_Fee" id="edit_test_fee">
+			 </div>
+                <div class="form-group">
+			   <label>Test_normalRangeFrom:</label>
+			   <input type="text" name="edit_Test_normalRangeFrom" id="edit_Test_normalRangeFrom">
+			 </div>
+                <div class="form-group">
+			   <label>Test_normalRangeTo:</label>
+			   <input type="text" name="edit_Test_normalRangeTo" id="edit_Test_normalRangeTo">
+			 </div>
+              <input type="submit" class="btn btn-success" value="Update" >
+		  </form>
+        </div>
+      </div>
+      
+    </div>
+       </div>
+		  
+	 </table>
+	 </div>
+
+  </div>
+</div>
+</body>
+</html>

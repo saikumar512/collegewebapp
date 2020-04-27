@@ -21,10 +21,13 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.servlet.annotation.WebServlet;
+
 /**
  *
- * @author pennantstaff
+ * @author 
  */
+@WebServlet(name = "DbConnection", urlPatterns = {"/DbConnection"})
 public class DbConnection {
     
  private static final String PROPERTY_FILENAME = "C:\\Users\\ksaik\\vijaya\\studentapp\\configure.properties";

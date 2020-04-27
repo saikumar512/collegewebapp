@@ -22,15 +22,12 @@ public class Dbcon implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public String getDriver() {
-        return driver;
-    }
-    private String driver;
+	private String driver;
     private String url;
     private String username;
         private String password;
     
-    public Dbcon() throws FileNotFoundException, IOException{
+   /*public Dbcon() throws FileNotFoundException, IOException{
            FileReader f=new FileReader("C:\\Users\\ksaik\\vijaya\\studentapp\\configure.properties");
                      Properties prop = new Properties();
                      prop.load(f);
@@ -38,19 +35,36 @@ public class Dbcon implements Serializable{
                      url=prop.getProperty("jdbc.url");
                      username=prop.getProperty("jdbc.username");
                      password=prop.getProperty("jdbc.password");
+    }*/
+        
+
+   
+    public void setDriver(String driver) {
+		this.driver = driver;
+	}
+    public String getDriver() {
+        return driver;
     }
 
     public String getUrl() {
         return url;
     }
+    
 
-    public String getUsername() {
+
+	public String getUsername() {
         return username;
     }
-
     public String getPassword() {
         return password;
     }
 
+
+    @Override
+	public String toString() {
+		return "Dbcon [driver=" + driver + ", url=" + url + ", username=" + username + ", password=" + password + "]";
+	}
+
+	
     
 }
